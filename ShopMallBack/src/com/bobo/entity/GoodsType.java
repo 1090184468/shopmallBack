@@ -1,6 +1,6 @@
 package com.bobo.entity;
 
-public class Goods_Type {
+public class GoodsType {
 	/****/
 	private  Integer  id;
 
@@ -25,7 +25,7 @@ public class Goods_Type {
 
 	@Override
 	public String toString() {
-		return "Goods_Type [id=" + id + ", type=" + type + "]";
+		return "GoodsType [id=" + id + ", type=" + type + "]";
 	}
 	
 	

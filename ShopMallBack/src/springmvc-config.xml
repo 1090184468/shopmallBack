@@ -26,7 +26,10 @@ xmlns:mvc="http://www.springframework.org/schema/mvc"
 	</mvc:annotation-driven>
 	<!--配置静态资源访问   不被前端控制器拦截-->
 	<mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
-	
+	<mvc:cors>
+        <mvc:mapping path="/**" allowed-origins="*" allow-credentials="true" max-age="1800"
+        allowed-methods="GET,POST,PUT,DELETE,PATCH,OPTIONS"/>
+    </mvc:cors>
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!--前缀  -->
 		<property name="prefix" value="/WEB-INF/jsp/"></property>

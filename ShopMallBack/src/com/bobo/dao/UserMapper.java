@@ -4,5 +4,5 @@ import com.bobo.entity.User;
 
 
 public interface UserMapper {
-	public User findUserById(String id);
+	public User findUserById(Integer id);
 }

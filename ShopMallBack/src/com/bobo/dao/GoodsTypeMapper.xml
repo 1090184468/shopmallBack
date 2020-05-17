@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!--
+ Mapper代理开发的规范：
+ 1)Mapper接口的名称必须和对应的Mapper.xml映射文件的名称一致
+ 2)Mapper.xml文件的namespace与Mapper接口的类路径相同(即接口文件和映射文件需要放在同一个包中)
+ 3)Mapper接口中的方法名和Mapper.xml中定义的每个执行语句的id相同
+ 4)Mapper接口中方法的输入参数类型和Mapper.xml中定义的每个sql的parameterType相同
+ 5)Mapper接口方法的输出参数类型要和Mapper.xml中定义的每个sql的resultType的类型相同
+   -->
+<!--namespace 表示命名空间 -->
+<mapper namespace="com.bobo.dao.GoodsTypeMapper">
+	<!--根据ID查询客户信息  -->
+	<select id="findGoodsTypeForDisplay" parameterType="Integer" resultType="GoodsType">
+		select * from goods_type limit 0,5
+	</select>
+</mapper>

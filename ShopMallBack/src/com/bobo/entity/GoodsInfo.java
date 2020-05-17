@@ -1,6 +1,6 @@
 package com.bobo.entity;
 
-public class Goods_Info {
+public class GoodsInfo {
 	/****/
 	private  Integer  goods_id;
 
@@ -28,6 +28,7 @@ public class Goods_Info {
 	/****/
 	private  String  is_recommend;
 
+	private  GoodsType goods_typeName;
 	public Integer getGoods_id() {
 		return goods_id;
 	}
@@ -100,11 +101,19 @@ public class Goods_Info {
 		this.is_recommend = is_recommend;
 	}
 
+	public GoodsType getGoods_typeName() {
+		return goods_typeName;
+	}
+
+	public void setGoods_typeName(GoodsType goods_typeName) {
+		this.goods_typeName = goods_typeName;
+	}
+
 	@Override
 	public String toString() {
-		return "Goods_Info [goods_id=" + goods_id + ", goods_name=" + goods_name + ", goods_price=" + goods_price
+		return "GoodsInfo [goods_id=" + goods_id + ", goods_name=" + goods_name + ", goods_price=" + goods_price
 				+ ", goods_num=" + goods_num + ", goods_img_path=" + goods_img_path + ", goods_type=" + goods_type
-				+ ", goods_profile=" + goods_profile + ", is_hot=" + is_hot + ", is_recommend=" + is_recommend + "]";
+				+ ", goods_profile=" + goods_profile + ", is_hot=" + is_hot + ", is_recommend=" + is_recommend
+				+ ", goods_typeName=" + goods_typeName + "]";
 	}
-	
 }
