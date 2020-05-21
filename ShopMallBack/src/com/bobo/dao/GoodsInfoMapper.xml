@@ -19,4 +19,15 @@
 	<select id="findGoodsInfoForIsRecommended" resultType="GoodsInfo">
 		select * from goods_info where is_recommend=1  limit 0,10
 	</select>
+	<select id="findGoodsInfoByGoodsName" parameterType="Map" resultType="GoodsInfo">
+		select * from goods_info where goods_name like concat('%',#{searchGoodsName},'%')
+		<if test="isPriceDown != null and isPriceDown != ''">
+			<if test="isPriceDown=='1'.toString()">
+				order by goods_price desc
+			</if>
+			<if test="isPriceDown=='0'.toString()">
+				order by goods_price asc
+			</if>
+		</if>
+	</select>
 </mapper>

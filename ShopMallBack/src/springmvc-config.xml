@@ -13,6 +13,7 @@ xmlns:mvc="http://www.springframework.org/schema/mvc"
         
     <!--定义组件扫描器，指定需要扫描的包  -->
 	<context:component-scan base-package="com.bobo.controller"></context:component-scan>
+	
 	<!--自定义消息转换器的编码,解决后台传输json回前台时，中文乱码问题 -->
 	<bean id="stringHttpMessageConverter"
 		class="org.springframework.http.converter.StringHttpMessageConverter">
@@ -24,16 +25,16 @@ xmlns:mvc="http://www.springframework.org/schema/mvc"
 			<ref bean="stringHttpMessageConverter" />
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-	<!--配置静态资源访问   不被前端控制器拦截-->
+	
+	<!-- 配置静态资源访问   不被前端控制器拦截 -->
 	<mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
 	<mvc:cors>
         <mvc:mapping path="/**" allowed-origins="*" allow-credentials="true" max-age="1800"
         allowed-methods="GET,POST,PUT,DELETE,PATCH,OPTIONS"/>
     </mvc:cors>
+    
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!--前缀  -->
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
-		<!--后缀  -->
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	<!--<mvc:interceptors>

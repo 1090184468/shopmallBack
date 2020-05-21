@@ -31,11 +31,6 @@
 		<!--初始化连接数  -->
 		<property name="initialSize" value="${jdbc.initialSize}"></property>
 	</bean>
-	<!--2配置JDBC模板  -->
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-	<!--默认必须使用数据源  -->
-			<property name="dataSource" ref="dataSource"> </property>
-	</bean>
 	
 	
 	<!--事务管理器，依赖于数据源  -->
@@ -61,7 +56,6 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.bobo.dao"></property>
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean>
 	
 

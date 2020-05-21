@@ -19,5 +19,4 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
 		// TODO Auto-generated method stub
 		return goodsTypeMapper.findGoodsTypeForDisplay();
 	}
-
 }

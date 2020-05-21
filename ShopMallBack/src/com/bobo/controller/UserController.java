@@ -28,9 +28,10 @@ public class UserController {
 	
 	@RequestMapping("/UserLogin")
 	public String userLogin(String id) {
+		System.out.println(666);
 		return "登录成功";
 	}
-	@RequestMapping("/home")
+	@RequestMapping(value="/home")
 	public String home(HttpServletResponse response) {
 		JSONArray goodsInfoBanner=JSONArray.fromObject(goodsInfoService.findGoodsInfoForBanner());
 		JSONArray goodsInfoRecommand=JSONArray.fromObject(goodsInfoService.findGoodsInfoForIsRecommended());
