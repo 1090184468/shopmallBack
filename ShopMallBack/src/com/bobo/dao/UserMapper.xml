@@ -14,6 +14,35 @@
 <mapper namespace="com.bobo.dao.UserMapper">
 	<!--根据ID查询客户信息  -->
 	<select id="findUserById" parameterType="String" resultType="User">
-		select * from t_user where id=${id}
+		select * from user where user_id=${id}
 	</select>
+	<!--根据用户名和密码查询客户信息  -->
+	<select id="findUserByUsernameAndPwd" parameterType="User" resultType="User">
+		select * from user where username=#{username} and password=#{password}
+	</select>
+	<insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyColumn="user_id" keyProperty="user_id">
+		insert into User(username,password,user_type,user_phone,user_addr) 
+		values(#{username},#{password},0,#{user_phone},#{user_addr})
+	</insert>
+	<select id="findUserByUsername" parameterType="String" resultType="Integer">
+		select count(*) from user where username=#{username}
+	</select>
+	<update id="updateUser" parameterType="User">
+		update user 
+		<set>
+			<if test="user_addr != null and user_addr != '' ">
+				user_addr=#{user_addr},
+			</if>
+			<if test="username != null and username != '' ">
+				username=#{username},
+			</if>
+			<if test="password != null and password != '' ">
+				password=#{password},
+			</if>
+			<if test="user_phone != null and user_phone != '' ">
+				user_phone=#{user_phone},
+			</if>
+		</set> 
+		where user_id=#{user_id}
+	</update>
 </mapper>

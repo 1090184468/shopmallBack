@@ -26,4 +26,11 @@ public class GoodsInfoController {
 		
 		return JSONUtil.returnJson(JSONArray.fromObject(goodsInfoService.findGoodsInfoByGoodsName(searchInfo)));
 	}
+	@RequestMapping(value="/searchGoodsInfoByGoodsType")
+	public String searchGoodsInfo(String goods_type) {
+		
+		
+		return JSONUtil.returnJson(JSONArray.fromObject(goodsInfoService.findGoodsInfoByType(goods_type)));
+	}
+	
 }

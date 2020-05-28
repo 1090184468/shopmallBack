@@ -6,4 +6,5 @@ import com.bobo.entity.GoodsType;
 
 public interface GoodsTypeService {
 	public List<GoodsType> findGoodsTypeForDisplay();
+	public List<GoodsType> findAllGoodsTypes();
 }

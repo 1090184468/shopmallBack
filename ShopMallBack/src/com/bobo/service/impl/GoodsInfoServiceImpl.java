@@ -33,4 +33,16 @@ public class GoodsInfoServiceImpl implements GoodsInfoService {
 		return goodsInfoMapper.findGoodsInfoByGoodsName(searchInfo);
 	}
 
+	@Override
+	public List<GoodsInfo> findGoodsInfoByType(String goods_type) {
+		// TODO Auto-generated method stub
+		return goodsInfoMapper.findGoodsInfoByType(goods_type);
+	}
+
+	@Override
+	public int updateGoodsInfoNum(GoodsInfo goodsInfo) {
+		// TODO Auto-generated method stub
+		return goodsInfoMapper.updateGoodsInfoNum(goodsInfo);
+	}
+
 }

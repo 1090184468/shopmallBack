@@ -11,12 +11,14 @@
  5)Mapper接口方法的输出参数类型要和Mapper.xml中定义的每个sql的resultType的类型相同
    -->
 <!--namespace 表示命名空间 -->
-<mapper namespace="com.bobo.dao.GoodsTypeMapper">
-	<!--根据ID查询客户信息  -->
-	<select id="findGoodsTypeForDisplay" parameterType="Integer" resultType="GoodsType">
-		select * from goods_type limit 0,5
+<mapper namespace="com.bobo.dao.CartMapper">
+	<insert id="insertGoodsToCart" parameterType="Cart">
+		insert into cart values(#{user_id},#{goods_id},#{num},#{add_time})
+	</insert>
+	<select id="findCartByUserIdAndGoodsId" parameterType="Cart" resultType="Integer">
+		select count(*) from cart where user_id=#{user_id} and goods_id=#{goods_id}
 	</select>
-	<select id="findAllGoodsTypes"  resultType="GoodsType">
-		select * from goods_type
-	</select>
+	<update id="updateCartByUserIdAndGoodsId" parameterType="Cart">
+		update cart set num=num+#{num},add_time=#{add_time} where user_id=#{user_id} and goods_id=#{goods_id}
+	</update>
 </mapper>

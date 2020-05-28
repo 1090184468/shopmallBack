@@ -19,4 +19,9 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
 		// TODO Auto-generated method stub
 		return goodsTypeMapper.findGoodsTypeForDisplay();
 	}
+	@Override
+	public List<GoodsType> findAllGoodsTypes() {
+		// TODO Auto-generated method stub
+		return goodsTypeMapper.findAllGoodsTypes();
+	}
 }
