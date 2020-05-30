@@ -17,5 +17,39 @@
 		select * from order_info where o_payState=#{o_payState} and o_sendState=#{o_sendState} and o_receiveState=#{o_receiveState} 
 		and o_user_id=#{o_user_id} order by o_date desc
 	</select>
-	
+	<select id="getGoodsInfoByOid" parameterType="Integer" resultMap="getGoodsInfoInOrder">
+		select gi.*,og.num ,type
+		from order_goods og,goods_info gi,goods_type gt
+		where og.o_id=#{o_id} and og.goods_id=gi.goods_id and gt.id=gi.goods_type
+	</select>
+	<resultMap type="GoodsInfo" id="getGoodsInfoInOrder">
+		<id property="goods_id" column="goods_id"/>
+		<result property="goods_name" column="goods_name"/>
+		<result property="goods_price" column="goods_price"/>
+		<result property="goods_num" column="num"/>
+		<result property="goods_img_path" column="goods_img_path"/>
+		<result property="goods_type" column="goods_type"/>
+		<result property="goods_profile" column="goods_profile"/>
+		<result property="is_hot" column="is_hot"/>
+		<result property="is_recommend" column="is_recommend"/>
+		<association property="goods_typeName" javaType="GoodsType">
+			<id property="id" column="goods_type"/>
+			<result property="type" column="type"/>
+		</association>
+	</resultMap>
+	<update id="updateOrderInfo" parameterType="OrderInfo"> 
+		update order_info 
+		<set>
+			<if test=" o_receiveState != null and o_receiveState != '' ">
+				o_receiveState=#{o_receiveState},
+			</if>
+			<if test=" o_payState != null and o_payState != '' ">
+				o_payState=#{o_payState},
+			</if>
+			<if test=" o_sendState != null and o_sendState != '' ">
+				o_sendState=#{o_sendState},
+			</if>
+		</set>
+		where o_id=#{o_id} and o_user_id=#{o_user_id}
+	</update>
 </mapper>
