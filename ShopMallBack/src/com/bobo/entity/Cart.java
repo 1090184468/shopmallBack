@@ -12,6 +12,17 @@ public class Cart {
 
 	/****/
 	private  String  add_time;
+	
+	private  GoodsInfo goodsInfo;
+	
+	
+	public GoodsInfo getGoodsInfo() {
+		return goodsInfo;
+	}
+
+	public void setGoodsInfo(GoodsInfo goodsInfo) {
+		this.goodsInfo = goodsInfo;
+	}
 
 	public Integer getUser_id() {
 		return user_id;

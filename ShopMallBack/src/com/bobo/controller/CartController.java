@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bobo.entity.Cart;
 import com.bobo.entity.User;
 import com.bobo.service.CartService;
+import com.bobo.util.JSONUtil;
+
+import net.sf.json.JSONArray;
 
 @RestController
 public class CartController {
@@ -25,6 +28,13 @@ public class CartController {
 			return "{msg:'插入失败'}";
 		}
 	}
+	
+	@RequestMapping("getGoodsInfoByUserId")
+	public String getGoodsInfoByUserId(Integer user_id) {
+
+		return JSONUtil.returnJson(JSONArray.fromObject(cartService.getGoodsInfoByUserId(user_id)));
+	}
+	
 
 	
 }

@@ -21,4 +21,26 @@
 	<update id="updateCartByUserIdAndGoodsId" parameterType="Cart">
 		update cart set num=num+#{num},add_time=#{add_time} where user_id=#{user_id} and goods_id=#{goods_id}
 	</update>
+	
+	<select id="getGoodsInfoByUserId" parameterType="Integer" resultMap="getGoodsFromCart">
+		select gi.*,cart.num,cart.user_id,cart.add_time  from cart,goods_info gi where user_id=#{user_id} and cart.goods_id=gi.goods_id
+	</select>
+	<resultMap type="Cart" id="getGoodsFromCart">
+		<result property="goods_id" column="goods_id"/>
+		<result property="user_id" column="user_id"/>
+		<result property="add_time" column="add_time"/>
+		<result property="num" column="num"/>
+		<association property="goodsInfo" javaType="GoodsInfo">
+			<id property="goods_id" column="goods_id"/>
+			<result property="goods_name" column="goods_name"/>
+			<result property="goods_price" column="goods_price"/>
+			<result property="goods_img_path" column="goods_img_path"/>
+			<result property="goods_type" column="goods_type"/>
+			<result property="goods_num" column="goods_num"/>
+			<result property="goods_profile" column="goods_profile"/>
+			<result property="is_hot" column="is_hot"/>
+			<result property="is_recommend" column="is_recommend"/>
+		</association>
+		
+	</resultMap>
 </mapper>

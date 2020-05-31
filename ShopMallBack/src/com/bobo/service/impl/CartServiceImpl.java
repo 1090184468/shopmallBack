@@ -1,5 +1,6 @@
 package com.bobo.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,12 @@ public class CartServiceImpl implements CartService {
 		}
 		
 		
+	}
+
+	@Override
+	public List<Cart> getGoodsInfoByUserId(int user_id) {
+		// TODO Auto-generated method stub
+		return cartMapper.getGoodsInfoByUserId(user_id);
 	}
 
 }
