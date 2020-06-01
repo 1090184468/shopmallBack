@@ -12,4 +12,7 @@ public interface CartMapper {
 	public int updateCartByUserIdAndGoodsId(Cart cart);
 	
 	public List<Cart> getGoodsInfoByUserId(int user_id);
+	public int  updateGoodsInfoByUserId(Cart cart);
+	
+	public int deleteGoodsFromCart(Map<String,String> map);
 }

@@ -39,4 +39,10 @@
 	<update id="updateGoodsInfoNum" parameterType="GoodsInfo" >
 		update goods_info set goods_num=goods_num-#{goods_num} where  goods_id=#{goods_id}
 	</update>
+	<update id="addGoodsInfoNum" parameterType="GoodsInfo" >
+		update goods_info set goods_num=goods_num+#{goods_num} where  goods_id=#{goods_id}
+	</update>
+	<update id="assignGoodsInfoNum" parameterType="GoodsInfo" >
+		update goods_info set goods_num=#{goods_num} where goods_id=#{goods_id}
+	</update>
 </mapper>

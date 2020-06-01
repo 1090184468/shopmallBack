@@ -45,4 +45,16 @@ public class GoodsInfoServiceImpl implements GoodsInfoService {
 		return goodsInfoMapper.updateGoodsInfoNum(goodsInfo);
 	}
 
+	@Override
+	public int assignGoodsInfoNum(GoodsInfo goodsInfo) {
+		// TODO Auto-generated method stub
+		return goodsInfoMapper.assignGoodsInfoNum(goodsInfo);
+	}
+
+	@Override
+	public int addGoodsInfoNum(GoodsInfo goodsInfo) {
+		// TODO Auto-generated method stub
+		return goodsInfoMapper.addGoodsInfoNum(goodsInfo);
+	}
+
 }

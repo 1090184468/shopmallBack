@@ -12,4 +12,6 @@ public interface GoodsInfoMapper {
 	
 	public List<GoodsInfo> findGoodsInfoByType(String goods_type);
 	public int updateGoodsInfoNum(GoodsInfo goodsInfo);
+	public int assignGoodsInfoNum(GoodsInfo goodsInfo);
+	public int addGoodsInfoNum(GoodsInfo goodsInfo);
 }

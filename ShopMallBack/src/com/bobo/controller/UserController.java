@@ -29,7 +29,7 @@ public class UserController {
 	@Autowired
 	private GoodsInfoService goodsInfoService;
 	
-	@RequestMapping("updateUser")
+	@RequestMapping("/updateUser")
 	public String updateUser(User user) {
 		int num = userService.updateUser(user);
 		if(num>0) {

@@ -43,4 +43,10 @@
 		</association>
 		
 	</resultMap>
+	<update id="updateGoodsInfoByUserId" parameterType="Cart">
+		update cart set num=#{num},add_time=#{add_time} where user_id=#{user_id} and goods_id=#{goods_id} 
+	</update>
+	<delete id="deleteGoodsFromCart" parameterType="map">
+		delete from cart where user_id=#{user_id} and goods_id in ${goods_ids}
+	</delete>
 </mapper>

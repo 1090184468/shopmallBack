@@ -10,4 +10,7 @@ public interface CartService {
 	public int insertGoodsToCart(Cart cart);
 	
 	public List<Cart> getGoodsInfoByUserId(int user_id);
+	public int  updateGoodsInfoByUserId(Cart cart);
+	
+	public int deleteGoodsInfoFromCartByUserId(Map<String, String> map,List<GoodsInfo> goodsInfos);
 }

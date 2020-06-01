@@ -44,4 +44,23 @@ public class CartServiceImpl implements CartService {
 		return cartMapper.getGoodsInfoByUserId(user_id);
 	}
 
+	@Override
+	public int updateGoodsInfoByUserId(Cart cart) {
+		// TODO Auto-generated method stub
+		int num=goodsInfoService.assignGoodsInfoNum(cart.getGoodsInfo());
+		num+=cartMapper.updateGoodsInfoByUserId(cart);
+		return num;
+	}
+
+	@Override
+	public int deleteGoodsInfoFromCartByUserId(Map<String, String> map, List<GoodsInfo> goodsInfos) {
+		int num=0;
+		num+=cartMapper.deleteGoodsFromCart(map);
+		System.out.println(num);
+		for (GoodsInfo goodsInfo : goodsInfos) {
+			num+=goodsInfoService.addGoodsInfoNum(goodsInfo);
+		}
+		return num;
+	}
+
 }
