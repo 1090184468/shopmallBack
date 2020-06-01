@@ -28,9 +28,9 @@ public class CartController {
 	public String insertGoodsToCart(Cart cart) {
 		int num = cartService.insertGoodsToCart(cart);
 		if(num>0) {
-			return "{msg:'插入成功'}";
+			return "{msg:'加入购物车成功'}";
 		}else {
-			return "{msg:'插入失败'}";
+			return "{msg:'加入购物车失败'}";
 		}
 	}
 	
@@ -43,9 +43,9 @@ public class CartController {
 	@RequestMapping("/updateGoodsInfoByUserId")
 	public String updateGoodsInfoByUserId(Cart cart) {
 		if(cartService.updateGoodsInfoByUserId(cart)>1) {
-			return "{msg:修改成功}";
+			return "{msg:'修改成功'}";
 		}else {
-			return "{msg:修改失败}";
+			return "{msg:'修改失败'}";
 		}
 	}
 	@RequestMapping("/deleteGoodsInfoFromCartByUserId")
@@ -67,8 +67,11 @@ public class CartController {
 		Map <String,String> map=new HashMap<String, String>();
 		map.put("user_id",user_id+"");
 		map.put("goods_ids", g_ids);
-		cartService.deleteGoodsInfoFromCartByUserId(map, goodsInfos);
-		return "{msg:修改成功}";
+		if(cartService.deleteGoodsInfoFromCartByUserId(map, goodsInfos)>0) {
+			return "{msg:'删除成功'}";
+		}else {
+			return "{msg:'删除失败'}";
+		}
 	}
 	
 	
