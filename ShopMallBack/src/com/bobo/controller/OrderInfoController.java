@@ -1,6 +1,9 @@
 package com.bobo.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,4 +43,27 @@ public class OrderInfoController {
 		return JSONUtil.returnJson(JSONArray.fromObject(goodsinfos));
 		
 	}
+	
+	@RequestMapping("/produceOrderInfo")
+	public String produceOrderInfo(Integer user_id,String goods_ids){
+		String g_ids="(";
+		String []goods_idAndNum=goods_ids.split(";");
+		List<GoodsInfo> goodsInfos=new ArrayList<>();
+		for(int i=0;i<goods_idAndNum.length;i++) {
+			GoodsInfo goodsInfo=new GoodsInfo();
+			goodsInfo.setGoods_id(Integer.parseInt(goods_idAndNum[i].split(",")[0]));
+			goodsInfo.setGoods_num(Integer.parseInt(goods_idAndNum[i].split(",")[1]));
+			goodsInfos.add(goodsInfo);
+			if(i!=goods_idAndNum.length-1) {
+				g_ids+=goods_idAndNum[i].split(",")[0]+",";
+			}else {
+				g_ids+=goods_idAndNum[i].split(",")[0]+")";
+			}
+		}
+		Map <String,String> map=new HashMap<String, String>();
+		map.put("user_id",user_id+"");
+		map.put("goods_ids", g_ids);
+		return "{msg:'生成订单成功'}";
+	}
+	
 }

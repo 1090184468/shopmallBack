@@ -52,4 +52,9 @@
 		</set>
 		where o_id=#{o_id} and o_user_id=#{o_user_id}
 	</update>
+	<insert id="getProduceOrderInfo" parameterType="OrderInfo" useGeneratedKeys="true" keyProperty="o_id" keyColumn="o_id">
+		insert into 
+		order_info(o_receiver,o_address,o_phone,o_user_id,o_payState,o_date,o_receiveState,o_sendState,o_isCancel,o_changeState)
+		values(#{o_receiver},#{o_address},#{o_phone},#{o_user_id},#{o_payState},#{o_date},#{o_receiveState},#{o_sendState},#{o_isCancel},#{o_changeState})
+	</insert>
 </mapper>
