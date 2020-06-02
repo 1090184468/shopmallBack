@@ -63,7 +63,12 @@ public class OrderInfoController {
 		Map <String,String> map=new HashMap<String, String>();
 		map.put("user_id",user_id+"");
 		map.put("goods_ids", g_ids);
-		return "{msg:'生成订单成功'}";
+		Integer o_id=orderInfoService.produceOrderInfo(map, goodsInfos);
+		if(o_id>0) {
+			return "{msg:'生成订单成功',o_id:"+o_id+"}";
+		}else {
+			return "{msg:'生成订单失败',o_id:'-1'}";
+		}
 	}
 	
 }

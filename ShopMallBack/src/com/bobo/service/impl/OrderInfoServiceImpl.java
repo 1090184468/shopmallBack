@@ -1,5 +1,6 @@
 package com.bobo.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bobo.dao.CartMapper;
 import com.bobo.dao.OrderInfoMapper;
 import com.bobo.dao.UserMapper;
 import com.bobo.entity.GoodsInfo;
@@ -22,6 +24,8 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 	private OrderInfoMapper orderInfoMapper;
 	@Autowired
 	private UserMapper userMapper;
+	@Autowired
+	private CartMapper cartMapper;
 	@Override
 	public List<OrderInfo> getOrderInfo(OrderInfo o) {
 		// TODO Auto-generated method stub
@@ -39,7 +43,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 	}
 	@Override
 	@Transactional
-	public int produceOrderInfo(Map<String, String> map) {
+	public int produceOrderInfo(Map<String, String> map, List<GoodsInfo> goodsInfos) {
 		// TODO Auto-generated method stub
 		String user_id=map.get("user_id");
 		User user=userMapper.findUserById(Integer.parseInt(user_id));
@@ -54,8 +58,24 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 		orderInfo.setO_sendState("0");
 		orderInfo.setO_isCancel("0");
 		orderInfo.setO_changeState("0");
+		
+		//生成新订单
 		orderInfoMapper.getProduceOrderInfo(orderInfo);
-		return 0;
+		//删除购物车的商品
+		cartMapper.deleteGoodsFromCart(map);
+		Map<String,String> order_goods=new HashMap<String, String>();
+		order_goods.put("o_id","");
+		order_goods.put("goods_id", "");
+		order_goods.put("num", "num");
+		//插入到订单商品表
+		for (GoodsInfo goodsInfo : goodsInfos) {
+			order_goods.put("o_id", orderInfo.getO_id()+"");
+			order_goods.put("goods_id", goodsInfo.getGoods_id()+"");
+			order_goods.put("num", goodsInfo.getGoods_num()+"");
+			orderInfoMapper.insertGoodsInfoToOrderInfo(order_goods);
+		}
+		
+		return orderInfo.getO_id();
 	}
 
 }

@@ -57,4 +57,9 @@
 		order_info(o_receiver,o_address,o_phone,o_user_id,o_payState,o_date,o_receiveState,o_sendState,o_isCancel,o_changeState)
 		values(#{o_receiver},#{o_address},#{o_phone},#{o_user_id},#{o_payState},#{o_date},#{o_receiveState},#{o_sendState},#{o_isCancel},#{o_changeState})
 	</insert>
+	
+	<insert id="insertGoodsInfoToOrderInfo" parameterType="Map" >
+		insert into order_goods
+		values(#{o_id},#{goods_id},#{num})
+	</insert>
 </mapper>
