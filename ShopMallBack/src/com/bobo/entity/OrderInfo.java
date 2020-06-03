@@ -34,6 +34,27 @@ public class OrderInfo {
 	/****/
 	private  String  o_changeState;
 
+	
+	private Integer orderIndex;
+	private Integer orderSize;
+	
+	
+	public Integer getOrderIndex() {
+		return orderIndex;
+	}
+
+	public void setOrderIndex(Integer orderIndex) {
+		this.orderIndex = orderIndex;
+	}
+
+	public Integer getOrderSize() {
+		return orderSize;
+	}
+
+	public void setOrderSize(Integer orderSize) {
+		this.orderSize = orderSize;
+	}
+
 	public Integer getO_id() {
 		return o_id;
 	}

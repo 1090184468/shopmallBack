@@ -15,7 +15,7 @@
 	
 	<select id="getOrderInfo" parameterType="OrderInfo" resultType="OrderInfo">
 		select * from order_info where o_payState=#{o_payState} and o_sendState=#{o_sendState} and o_receiveState=#{o_receiveState} 
-		and o_user_id=#{o_user_id} order by o_date desc
+		and o_user_id=#{o_user_id} order by o_date desc limit #{orderIndex},#{orderSize}
 	</select>
 	<select id="getGoodsInfoByOid" parameterType="Integer" resultMap="getGoodsInfoInOrder">
 		select gi.*,og.num ,type
@@ -62,4 +62,7 @@
 		insert into order_goods
 		values(#{o_id},#{goods_id},#{num})
 	</insert>
+	<update id="payOrderByOid"	parameterType="Integer">
+		update order_info set o_receiveState="1" where o_id=#{o_id}
+	</update>
 </mapper>

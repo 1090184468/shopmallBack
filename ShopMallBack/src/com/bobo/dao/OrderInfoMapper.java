@@ -15,4 +15,8 @@ public interface OrderInfoMapper {
 	public int getProduceOrderInfo(OrderInfo orderInfo);
 	
 	public int insertGoodsInfoToOrderInfo(Map<String,String> map);
+	
+	public int payOrderByOid(int o_id);
+	
+	
 }	

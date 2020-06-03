@@ -29,6 +29,27 @@ public class GoodsInfo {
 	private  String  is_recommend;
 
 	private  GoodsType goods_typeName;
+	
+	private Integer goodsIndex;
+	private Integer goodsSize;
+	
+	
+	public Integer getGoodsIndex() {
+		return goodsIndex;
+	}
+
+	public void setGoodsIndex(Integer goodsIndex) {
+		this.goodsIndex = goodsIndex;
+	}
+
+	public Integer getGoodsSize() {
+		return goodsSize;
+	}
+
+	public void setGoodsSize(Integer goodsSize) {
+		this.goodsSize = goodsSize;
+	}
+
 	public Integer getGoods_id() {
 		return goods_id;
 	}
