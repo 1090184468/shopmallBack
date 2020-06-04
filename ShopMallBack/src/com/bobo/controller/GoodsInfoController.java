@@ -19,11 +19,12 @@ public class GoodsInfoController {
 	private GoodsInfoService goodsInfoService;
 	
 	@RequestMapping(value="/searchGoodsInfo")
-	public String searchGoodsInfo(String search_goods_name,String is_price_down) {
+	public String searchGoodsInfo(String search_goods_name,String is_price_down,String goodsIndex,String goodsSize) {
 		Map<String,String> searchInfo=new HashMap<String,String>();
 		searchInfo.put("searchGoodsName", search_goods_name);
 		searchInfo.put("isPriceDown",is_price_down);
-		
+		searchInfo.put("goodsIndex", goodsIndex);
+		searchInfo.put("goodsSize",goodsSize);
 		return JSONUtil.returnJson(JSONArray.fromObject(goodsInfoService.findGoodsInfoByGoodsName(searchInfo)));
 	}
 	@RequestMapping(value="/searchGoodsInfoByGoodsType")

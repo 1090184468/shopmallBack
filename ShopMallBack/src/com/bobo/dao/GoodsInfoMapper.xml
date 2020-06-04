@@ -32,6 +32,9 @@
 				order by goods_price asc
 			</if>
 		</if>
+		<if test="goodsSize != '0'.toString() ">
+			limit ${goodsIndex},${goodsSize}
+		</if>
 	</select>
 	<select id="findGoodsInfoByType" parameterType="String" resultType="GoodsInfo">
 		select * from goods_info where goods_type=#{goods_type}

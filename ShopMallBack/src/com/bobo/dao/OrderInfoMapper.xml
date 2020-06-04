@@ -63,6 +63,6 @@
 		values(#{o_id},#{goods_id},#{num})
 	</insert>
 	<update id="payOrderByOid"	parameterType="Integer">
-		update order_info set o_receiveState="1" where o_id=#{o_id}
+		update order_info set o_payState="1" where o_id=#{o_id}
 	</update>
 </mapper>
