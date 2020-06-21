@@ -28,6 +28,12 @@ xmlns:mvc="http://www.springframework.org/schema/mvc"
 	
 	<!-- 配置静态资源访问   不被前端控制器拦截 -->
 	<mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
+	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+	<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
+	<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
+	<mvc:resources location="/assets/" mapping="/assets/**"></mvc:resources>
+	<mvc:resources location="/layui/" mapping="/layui/**"></mvc:resources>
+	<mvc:resources location="/html/" mapping="/html/**"></mvc:resources>
 	<mvc:cors>
         <mvc:mapping path="/**" allowed-origins="*" allow-credentials="true" max-age="1800"
         allowed-methods="GET,POST,PUT,DELETE,PATCH,OPTIONS"/>

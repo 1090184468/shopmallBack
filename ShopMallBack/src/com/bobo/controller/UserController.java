@@ -39,6 +39,7 @@ public class UserController {
 		}
 	}
 	
+	
 	@RequestMapping("/UserLogin")
 	public String userLogin(User user) {
 		User findUser=userService.findUserByUsernameAndPwd(user);
